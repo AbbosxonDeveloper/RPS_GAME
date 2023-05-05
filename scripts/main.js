@@ -17,6 +17,11 @@ let elems = [brock, bpaper, bscissor]
 let val = 0
 let enemyval = Math.ceil(Math.random() * 3)
 
+
+let getscore = localStorage.getItem("score")
+let score = document.getElementById("score")
+score.innerHTML = getscore || 0
+
 for (const el of elems) {
     el.onclick = function(){
         setMeImg(el.id)
@@ -46,6 +51,11 @@ function ShowResult(text, mee, enemyy){
     }
 }
 
+function setScore(){
+    localStorage.setItem("score", +getscore + 1)
+    score.innerHTML = +getscore + 1
+}
+
 function PlaygroundSpawn() {
     playground.style.visibility = "visible"
     playground.style.marginBottom = "100px"
@@ -59,7 +69,7 @@ function PlaygroundSpawn() {
         num --
     }, 1000)
 
-    let maininterv 
+    var maininterv 
     setTimeout(() => {
                 maininterv = setInterval(() => {
                 timer.textContent = null
@@ -68,6 +78,7 @@ function PlaygroundSpawn() {
                 }
                 else if((val == 1 && enemyval == 3) || (val == 2 && enemyval == 1) || (val == 3 && enemyval == 2)){
                     ShowResult("you won", val, enemyval)
+                    setScore(true)
                 }
                 else if ((val == 1 && enemyval == 2) || (val == 2 && enemyval == 3) || (val == 3 && enemyval == 1)) {
                     ShowResult("you lose", val, enemyval)
@@ -75,14 +86,14 @@ function PlaygroundSpawn() {
                 else if(!val){
                     ShowResult("you lose", 0, enemyval)
                 }
-                clearInterval(interv)
+            clearInterval(interv)
             timer.textContent = null 
         },100)
     }, 6000)
     clearInterval(maininterv)
     setTimeout(() => {
         gameover.style.visibility = "visible"
-    }, 8500)
+    }, 7500)
     
 }
 
