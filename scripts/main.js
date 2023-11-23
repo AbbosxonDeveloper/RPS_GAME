@@ -89,7 +89,7 @@ function PlaygroundSpawn() {
             clearInterval(interv)
             timer.textContent = null 
         },100)
-    }, 6000)
+    }, 4000)
     clearInterval(maininterv)
     setTimeout(() => {
         gameover.style.visibility = "visible"
