@@ -63,7 +63,7 @@ function PlaygroundSpawn() {
     button.style.visibility = "hidden"
 
     timer.textContent = '...'
-    let num = 5
+    let num = 3
     let interv = setInterval(() => {
         timer.textContent = num
         num --
@@ -89,7 +89,7 @@ function PlaygroundSpawn() {
             clearInterval(interv)
             timer.textContent = null 
         },100)
-    }, 6000)
+    }, 4000)
     clearInterval(maininterv)
     setTimeout(() => {
         gameover.style.visibility = "visible"
